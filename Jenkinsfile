@@ -38,3 +38,4 @@
         sh "kubectl get all"
       }
     }  
+   }
