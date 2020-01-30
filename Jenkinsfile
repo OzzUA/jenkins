@@ -1,4 +1,3 @@
-pipeline {
   environment {
     registry = "220760/wordpress"
     registryCredential = 'dockerhub'
@@ -40,4 +39,4 @@ pipeline {
         sh "kubectl get all"
       }
     }
-  }
+}
