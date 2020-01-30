@@ -1,3 +1,4 @@
+pipeline {
   environment {
     registry = "220760/wordpress"
     registryCredential = 'dockerhub'
@@ -19,8 +20,8 @@
     }
     stage('Deploy Image') {
       steps{
-         script {
-            docker.withRegistry( '', registryCredential ) {
+        script {
+          docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
           }
         }
@@ -31,4 +32,5 @@
         sh "docker rmi $registry:$BUILD_NUMBER"
       }
     }
-   }
+  }
+}
