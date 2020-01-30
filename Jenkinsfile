@@ -32,7 +32,6 @@
         sh "docker rmi $registry:$BUILD_NUMBER"
       }
     }
-  }
 }
     stage('test run kubectl') {
       steps{
