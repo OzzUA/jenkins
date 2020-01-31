@@ -5,6 +5,11 @@ pipeline {
     dockerImage = ''
   }
   agent any
+   parameters {
+     gitParameter name: 'TAG',
+                  type: 'PT_TAG',
+                  defaultValue: 'master'
+    }
   stages {
     stage('Cloning Git') {
       steps {
