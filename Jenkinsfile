@@ -6,9 +6,9 @@ pipeline {
   }
   agent any
    parameters {
-     gitParameter name: 'TAG',
-                  type: 'PT_TAG',
-                  defaultValue: 'master'
+#     gitParameter name: 'TAG',
+#                  type: 'PT_TAG',
+#                  defaultValue: 'master'
     }
   stages {
     stage('Cloning Git') {
