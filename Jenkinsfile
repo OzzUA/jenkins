@@ -3,7 +3,6 @@ pipeline {
     registry = "220760/wordpress"
     registryCredential = 'dockerhub'
     dockerImage = ''
-    GIT_TAG = sh(script: "git tag", returnStdout: true).trim()
   }
   agent any
   stages {
@@ -15,6 +14,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
+          GIT_TAG = sh(script: "git tag", returnStdout: true).trim()
           dockerImage = docker.build registry + ":$GIT_TAG"
         }
       }
