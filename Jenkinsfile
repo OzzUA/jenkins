@@ -3,6 +3,7 @@ pipeline {
     registry = "220760/wordpress"
     registryCredential = 'dockerhub'
     dockerImage = ''
+    env.GIT_TAG = sh(script: "git tag", returnStdout: true).trim()
   }
   agent any
   stages {
@@ -14,7 +15,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          dockerImage = docker.build registry + "$GIT_TAG"
+          dockerImage = docker.build registry + ":$GIT_TAG"
         }
       }
     }
@@ -29,7 +30,7 @@ pipeline {
     }
     stage('Remove Unused docker image') {
       steps{
-        sh "docker rmi $registry:$GIT_TAG"
+        sh "docker rmi $registry::$GIT_TAG"
       }
     }
   }
