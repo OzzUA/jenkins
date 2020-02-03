@@ -14,8 +14,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          $GIT_TAG = sh(script: "git tag", returnStdout: true).trim()
-          dockerImage = docker.build registry + ":$GIT_TAG"
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
@@ -30,7 +29,7 @@ pipeline {
     }
     stage('Remove Unused docker image') {
       steps{
-        sh "docker rmi $registry::$GIT_TAG"
+        sh "docker rmi $registry:$BUILD_NUMBER"
       }
     }
   }
