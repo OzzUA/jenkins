@@ -2,7 +2,7 @@ pipeline {
   environment {
     registry = "220760/wordpress"
     registryCredential = 'dockerhub'
-    dockerImage = ''
+    dockerImage = 'wordpress-kube'
   }
   agent any
   stages {
