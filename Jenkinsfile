@@ -14,7 +14,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          GIT_TAG = sh(script: "git tag", returnStdout: true).trim()
+          $GIT_TAG = sh(script: "git tag", returnStdout: true).trim()
           dockerImage = docker.build registry + ":$GIT_TAG"
         }
       }
